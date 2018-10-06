@@ -1,0 +1,28 @@
+version: '2'
+services:
+  efficycle:
+    image: efficycle
+    build: .
+    ports:
+    - "8080:8080"
+    environment:
+    - MYAPP_JDBC_URL=jdbc:postgresql://effidb:5432/efficycle
+    - MYAPP_JDBC_USER=postgres
+    - MYAPP_JDBC_PASS=password
+    depends_on:
+    - effidb
+    container_name: efficycle-app
+
+  effidb:
+    image: postgres
+    ports:
+    - "5435:5432"
+    volumes:
+    - 'postgres:/var/lib/postgresql/data'
+    environment:
+    - POSTGRES_PASSWORD=password
+    - POSTGRES_USER=postgres
+    - POSTGRES_DB=efficycle
+
+volumes:
+  postgres:
