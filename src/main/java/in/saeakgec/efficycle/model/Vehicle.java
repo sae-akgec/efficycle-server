@@ -1,5 +1,10 @@
 package in.saeakgec.efficycle.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import in.saeakgec.efficycle.repository.UserVehicleRepository;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -18,8 +23,6 @@ public class Vehicle {
 
     @NotBlank
     @Size(max = 15)
-
-
     private String vehicleNo;
 
     @NotBlank
@@ -29,21 +32,106 @@ public class Vehicle {
     @NotBlank
     private String password;
 
-    @NotBlank
+
     private float gfLat;
 
-    @NotBlank
+
     private float gfLon;
 
-    @NotBlank
+
     private float gfRadius;
 
-    @NotBlank
     private int speedLimit;
 
-//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "vehicles", fetch = FetchType.EAGER)
-//    private List<UserVehicle> vehiclesUser;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "vehicle", fetch = FetchType.EAGER)
+    private List<UserVehicle> vehiclesUser;
 
-//    status
-//
+    @OneToOne(fetch = FetchType.EAGER,
+            cascade =  CascadeType.ALL,
+            mappedBy = "vehicle")
+    private VehicleStatus vehicleStatus;
+
+
+    public Vehicle() {
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getVehicleNo() {
+        return vehicleNo;
+    }
+
+    public void setVehicleNo(String vehicleNo) {
+        this.vehicleNo = vehicleNo;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public float getGfLat() {
+        return gfLat;
+    }
+
+    public void setGfLat(float gfLat) {
+        this.gfLat = gfLat;
+    }
+
+    public float getGfLon() {
+        return gfLon;
+    }
+
+    public void setGfLon(float gfLon) {
+        this.gfLon = gfLon;
+    }
+
+    public float getGfRadius() {
+        return gfRadius;
+    }
+
+    public void setGfRadius(float gfRadius) {
+        this.gfRadius = gfRadius;
+    }
+
+    public int getSpeedLimit() {
+        return speedLimit;
+    }
+
+    public void setSpeedLimit(int speedLimit) {
+        this.speedLimit = speedLimit;
+    }
+
+    public List<UserVehicle> getVehiclesUser() {
+        return vehiclesUser;
+    }
+
+    public void setVehiclesUser(List<UserVehicle> vehiclesUser) {
+        this.vehiclesUser = vehiclesUser;
+    }
+
+    public VehicleStatus getVehicleStatus() {
+        return vehicleStatus;
+    }
+
+    public void setVehicleStatus(VehicleStatus vehicleStatus) {
+        this.vehicleStatus = vehicleStatus;
+    }
 }

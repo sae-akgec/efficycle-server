@@ -1,6 +1,7 @@
 package in.saeakgec.efficycle.service;
 
 import in.saeakgec.efficycle.model.User;
+import in.saeakgec.efficycle.model.Vehicle;
 import in.saeakgec.efficycle.model.VehicleStatus;
 import in.saeakgec.efficycle.repository.VehicleStatusRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,5 +33,14 @@ public class VehicleStatusServiceImpl implements VehicleStatusService{
     @Override
     public List<VehicleStatus> findAll() {
         return VehicleStatusRepository.findAll();
+    }
+
+    @Override
+    public VehicleStatus findByVehicle(Vehicle vehicle) {
+        Optional<VehicleStatus> VehicleStatus = VehicleStatusRepository.findByVehicle(vehicle);
+        if(VehicleStatus.isPresent()){
+            return VehicleStatus.get();
+        }
+        return null;
     }
 }

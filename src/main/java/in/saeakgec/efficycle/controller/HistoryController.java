@@ -9,7 +9,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/vehicles")
+@RequestMapping("/api/history")
 public class HistoryController {
     @Autowired
     VehicleService vehicleService;

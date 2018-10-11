@@ -1,6 +1,8 @@
 package in.saeakgec.efficycle.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
@@ -26,5 +28,10 @@ public class VehicleStatus {
 
     @NotBlank
     private float batteryPercent;
+
+    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "vehicle_id")
+    @JsonIgnore
+    private Vehicle vehicle;
 
 }
