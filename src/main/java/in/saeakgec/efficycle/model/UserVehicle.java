@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "user_vehicle")
-public class UserVehicleModel {
+public class UserVehicle {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -12,12 +12,12 @@ public class UserVehicleModel {
 
     private boolean isAdmin;
 
-    @ManyToOne
-    @JoinColumn(name ="user_id")
-    private UserModel user;
+//    @ManyToOne
+//    @JoinColumn(name ="user_id")
+//    private User user;
 
-    @ManyToOne
-    @JoinColumn(name ="vehicle_id")
-    private VehicleModel vehicleModel;
+//    @ManyToOne
+//    @JoinColumn(name ="vehicle_id")
+//    private Vehicle vehicleModel;
 //    history
 }

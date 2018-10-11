@@ -6,7 +6,7 @@ import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "vehicle_status")
-public class VehicleStatusModel {
+public class VehicleStatus {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;

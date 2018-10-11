@@ -8,16 +8,17 @@ import java.util.List;
 @Entity
 @Table(name = "vehicles", uniqueConstraints = {
         @UniqueConstraint(columnNames = {
-                "vehicle_no"
+                "vehicleNo"
         })
 })
-public class VehicleModel {
+public class Vehicle {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @NotBlank
     @Size(max = 15)
+
 
     private String vehicleNo;
 
@@ -40,8 +41,8 @@ public class VehicleModel {
     @NotBlank
     private int speedLimit;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "vehicles", fetch = FetchType.EAGER)
-    private List<UserVehicleModel> vehiclesUser;
+//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "vehicles", fetch = FetchType.EAGER)
+//    private List<UserVehicle> vehiclesUser;
 
 //    status
 //
