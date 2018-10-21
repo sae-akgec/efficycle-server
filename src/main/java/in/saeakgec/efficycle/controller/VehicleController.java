@@ -11,6 +11,7 @@ import in.saeakgec.efficycle.service.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -37,6 +38,16 @@ public class VehicleController {
     @GetMapping({"/", ""})
     public List<Vehicle> getVehicles(){
         return vehicleService.findAll();
+    }
+
+    @GetMapping("/unlock")
+    public String vehicleUnlock(){
+
+        final String uri = "http://192.168.43.116:5000/unlock";
+
+        RestTemplate restTemplate = new RestTemplate();
+        String result = restTemplate.getForObject(uri, String.class);
+        return result;
     }
 
     @GetMapping("/{id}")

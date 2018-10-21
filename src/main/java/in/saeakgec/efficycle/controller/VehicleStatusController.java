@@ -29,7 +29,8 @@ public class VehicleStatusController {
     VehicleService vehicleService;
 
     @PostMapping({"/", ""})
-    public VehicleStatus addVehicleStatus(@Valid @RequestBody VehicleStatus vehicleStatus) {
+    public VehicleStatus addVehicleStatus(@RequestBody VehicleStatus vehicleStatus) {
+        vehicleStatus.setVehicle(vehicleService.findById(1));
         return vehicleStatusService.saveVehicleStatus(vehicleStatus);
     }
 
